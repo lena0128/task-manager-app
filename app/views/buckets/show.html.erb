@@ -1,0 +1,11 @@
+<div>
+<h1><%= @bucket.name %></h1>
+
+<p><%= @bucket.description %></p>
+<p>Status: <strong><%= @bucket.status %></strong></p>
+<small><%= @bucket.quantity %> tasks in total</small>
+</div>
+<br>
+<%= link_to "Edit", edit_bucket_path(@bucket) %>
+<br><br>
+<%= button_to "Delete", @bucket, method: :delete, data: { confirm: "Please confirm"} %>
