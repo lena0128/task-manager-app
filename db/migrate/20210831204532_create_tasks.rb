@@ -1,10 +1,10 @@
-class CreateBuckets < ActiveRecord::Migration[6.1]
+class CreateTasks < ActiveRecord::Migration[6.1]
   def change
-    create_table :buckets do |t|
+    create_table :tasks do |t|
       t.string :name
       t.string :description
       t.string :status
-      t.integer :quantity
+      t.integer :bucket_id
       t.timestamps
     end
   end
