@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create([{username: "Joyce13", email: "joyce@email.com", password: "password"}])
+
+Bucket.create([{name: "Joyce's B Party", description: "This is a list for Joyce's 9 years old birthday party preparation.", status: "In Progress", quantity: 6}])

@@ -5,6 +5,7 @@ class CreateTasks < ActiveRecord::Migration[6.1]
       t.string :description
       t.string :status
       t.integer :bucket_id
+      t.integer :user_id
       t.timestamps
     end
   end

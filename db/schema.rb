@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_08_31_205116) do
     t.string "description"
     t.string "status"
     t.integer "bucket_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

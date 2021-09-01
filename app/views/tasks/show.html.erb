@@ -1,0 +1,9 @@
+<h3><%= @task.name %></h3>
+<small><i>Created by <%= @task.user.username %></i></small>
+<p>Belongs to <b><%= @task.bucket.name %></b> bucket</p>
+<p><b>Description:</b> <br><%= @task.description %></p>
+<p><b>Status:</b> <%= @task.status %>
+<br><br>
+<%= link_to "Edit", edit_task_path(@task) %>
+<br>
+<%= button_to "Delete", @task, method: :delete, data: {confirm: "Please confirm"} %>

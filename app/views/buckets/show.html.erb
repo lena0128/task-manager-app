@@ -3,7 +3,13 @@
 
 <p><%= @bucket.description %></p>
 <p>Status: <strong><%= @bucket.status %></strong></p>
-<small><%= @bucket.quantity %> tasks in total</small>
+<div>
+   <%= @bucket.quantity %> tasks in total
+    <% @bucket.tasks.each do |t| %> 
+     <li><%= link_to t.name, task_path(t) %></li>
+    <%end%> 
+</div>
+
 </div>
 <br>
 <%= link_to "Edit", edit_bucket_path(@bucket) %>

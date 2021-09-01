@@ -1,0 +1,19 @@
+<h3>Create a New Task</h3>
+
+<%= render partial: "application/errors", locals: { errors: @task.errors.full_messages } %>
+
+<%= form_for @task do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br><br>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+    <br><br>
+    <%= f.label :status %>
+    <%= f.select :status, ["Not Start", "In Progress", "Finished"], prompt: "Please select" %>
+    <br><br>
+    <%= f.label "Put in a bucket" %>
+    <%= f.collection_select :bucket_id, Bucket.all, :id, :name, prompt: "Please select" %>
+    <br><br>
+    <%= f.submit %>
+<%end%>    
