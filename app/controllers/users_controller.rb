@@ -8,6 +8,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user.id
+            flash[:message] = "Welcome, #{@user.username}!"
             redirect_to user_path(@user)
         else
             render :new
@@ -23,7 +24,8 @@ private
         params.require(:user).permit(
             :username,
             :email,
-            :password
+            :password,
+            :password_confirmation
         )
     end 
 

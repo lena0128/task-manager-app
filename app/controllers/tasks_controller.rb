@@ -1,8 +1,13 @@
 class TasksController < ApplicationController
     before_action :set_task, except: [:index, :new, :create]
 
+    def index
+        @tasks = Task.all
+    end
+
     def new
         @task = Task.new
+        @buckets = Bucket.all
     end
 
     def create

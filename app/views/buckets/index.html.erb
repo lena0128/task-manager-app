@@ -1,1 +1,4 @@
 <h1>View All Buckets</h1>
+<% @buckets.each do |b| %>
+    <li><%= link_to b.name, bucket_path(b) %></li>
+<%end%>    

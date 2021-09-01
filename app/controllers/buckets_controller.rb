@@ -1,5 +1,6 @@
 class BucketsController < ApplicationController
     before_action :set_bucket, only: [:show, :edit, :update, :destroy]
+    before_action :require_login
 
     def index
         @buckets = Bucket.all
@@ -7,6 +8,8 @@ class BucketsController < ApplicationController
 
     def new
         @bucket = Bucket.new
+        @bucket.tasks.build(user: current_user)
+        @tasks = @bucket.tasks.select { |t| t.user_id == current_user.id }
     end
 
     def show
@@ -19,10 +22,13 @@ class BucketsController < ApplicationController
 
     def create
         @bucket = Bucket.new(bucket_params)
+        @bucket.tasks.each { |t|t.user_id = current_user.id }
         if @bucket.save
+            flash[:message] = "New bucket successfully created!"
             redirect_to bucket_path(@bucket)
         else
             #@errors = @bucket.errors.full_messages
+            @bucket.tasks.select { |t|t.user_id == current_user.id }
             render :new
         end
     end
@@ -49,7 +55,8 @@ class BucketsController < ApplicationController
             :name,
             :description,
             :status,
-            :quantity
+            :quantity,
+            tasks_attributes: [:name, :description, :status, :user_id, :id] 
         )
       end
 
