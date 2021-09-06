@@ -4,6 +4,10 @@ class Bucket < ApplicationRecord
 
     validates_presence_of :name, :description, :status, :quantity
 
+    scope :buckets_empty, -> {where(status: "Empty")}
+    scope :buckets_pending, -> {where(status: "Pending")}
+    scope :buckets_completed, -> {where(status: "Completed")}
+
     #accepts_nested_attributes_for :tasks
 
     def tasks_attributes=(tasks_attributes)
@@ -17,5 +21,6 @@ class Bucket < ApplicationRecord
           end
         end
     end
+
 
 end

@@ -10,7 +10,7 @@
     <%= f.text_area :description %>
     <br><br>
     <%= f.label :status %>
-    <%= f.select :status, ["Not Start", "In Progress", "Finished"], prompt: "Please select" %>
+    <%= f.select :status, ["Not Start", "In Progress", "Completed"], prompt: "Please select" %>
     <br><br>
     <%= f.label "Put in a bucket" %>
     <%= f.collection_select :bucket_id, Bucket.all, :id, :name, prompt: "Please select" %>

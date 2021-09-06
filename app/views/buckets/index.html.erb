@@ -1,4 +1,13 @@
-<h1>View All Buckets</h1>
-<% @buckets.each do |b| %>
-    <li><%= link_to b.name, bucket_path(b) %></li>
-<%end%>    
+
+
+<h3>View Empty Buckets</h3>
+<%= render partial: 'buckets', locals: { buckets: @empty_buckets } %>
+<br>
+
+<h3>View Pending Buckets</h3>
+<%= render partial: 'buckets', locals: { buckets: @pending_buckets } %>
+<br>
+
+<h3>View Completed Buckets</h3>
+  <%= render partial: 'buckets', locals: { buckets: @completed_buckets } %>
+    

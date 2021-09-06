@@ -3,6 +3,9 @@ class BucketsController < ApplicationController
     before_action :require_login
 
     def index
+        @empty_buckets = Bucket.buckets_empty
+        @pending_buckets = Bucket.buckets_pending
+        @completed_buckets = Bucket.buckets_completed
         @buckets = Bucket.all
     end
 

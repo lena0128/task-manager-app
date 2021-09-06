@@ -1,4 +1,9 @@
-<h3>View All Tasks</h3>
-<% @tasks.each do |t| %>
-    <li><%= link_to t.name, task_path(t) %></li>
-<%end%>    
+<h3>Not Start Tasks</h3>
+ <%= render partial: 'tasks', locals: {tasks: @tasks_not_start } %>
+ <br>
+<h3>In Progress Tasks</h3>
+ <%= render partial: 'tasks', locals: {tasks: @tasks_in_progress } %>
+ <br> 
+ <h3>Completed Tasks</h3>
+ <%= render partial: 'tasks', locals: {tasks: @tasks_completed } %>
+ <br>  

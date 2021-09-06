@@ -2,6 +2,9 @@ class TasksController < ApplicationController
     before_action :set_task, except: [:index, :new, :create]
 
     def index
+        @tasks_not_start = Task.tasks_not_start
+        @tasks_in_progress = Task.tasks_in_progress
+        @tasks_completed = Task.tasks_completed
         @tasks = Task.all
     end
 
