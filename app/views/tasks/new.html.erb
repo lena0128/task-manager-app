@@ -2,7 +2,7 @@
 
 <%= render partial: "application/errors", locals: { errors: @task.errors.full_messages } %>
 
-<%= form_for @task do |f| %>
+<%= form_for(@task, url: task_form_helper(@bucket)) do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
     <br><br>
@@ -12,8 +12,10 @@
     <%= f.label :status %>
     <%= f.select :status, ["Not Start", "In Progress", "Completed"], prompt: "Please select" %>
     <br><br>
+    <% if !@bucket %>
     <%= f.label "Put in a bucket" %>
     <%= f.collection_select :bucket_id, Bucket.all, :id, :name, prompt: "Please select" %>
     <br><br>
+    <%end%>
     <%= f.submit %>
 <%end%>    

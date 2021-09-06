@@ -9,9 +9,8 @@
      <li><%= link_to t.name, task_path(t) %></li>
     <%end%> 
 </div>
-
-</div>
 <br>
+<%= link_to "New Task", new_bucket_task_path(@bucket) %>
 <%= link_to "Edit", edit_bucket_path(@bucket) %>
 <br><br>
 <%= button_to "Delete", @bucket, method: :delete, data: { confirm: "Please confirm"} %>

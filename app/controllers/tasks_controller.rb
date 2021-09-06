@@ -10,23 +10,47 @@ class TasksController < ApplicationController
     end
 
     def new
-        @task = Task.new
-        @buckets = Bucket.all
+        if params[:bucket_id]
+            @bucket = Bucket.find_by(id: params[:bucket_id])
+            @task = @bucket.tasks.build(user: current_user)
+            @buckets = Bucket.all
+        else
+            @task = Task.new
+            @buckets = Bucket.all
+        end
     end
 
     def create
-        @task = Task.new(task_params)
-        @task.user = current_user
-        if @task.save
-            flash[:message] = "New task has been successfully created!"
-            redirect_to task_path(@task)
-        else
-            render :new
+           @task = Task.new(task_params)
+           @task.user_id = current_user.id
+             if params[:bucket_id]
+                @task.bucket_id = params[:bucket_id]
+                @bucket = Bucket.find_by(id: params[:bucket_id])
+             end  
+
+             if @task.save
+                  flash[:message] = "New task has been successfully created!"
+             end
+
+               if params[:bucket_id]
+                  @bucket = Bucket.find_by(id: params[:bucket_id])  
+                  redirect_to bucket_task_path(@bucket, @task)
+               elsif params[:id]
+                  redirect_to task_path(@task)
+              else
+                render :new
         end
     end
 
     def show
-        @task = Task.find_by(id: [params[:id]])
+        if params[:bucket_id]
+            @bucket = Bucket.find_by(id: params[:bucket_id])
+            @task = Task.find_by(id: [params[:id]])
+            @user = current_user
+        else
+            @task = Task.find_by(id: [params[:id]])
+            @user = current_user
+        end
     end
 
     def edit
@@ -53,7 +77,8 @@ class TasksController < ApplicationController
             :name,
             :description,
             :status,
-            :bucket_id
+            :bucket_id, 
+            :user_id
         )
       end
 

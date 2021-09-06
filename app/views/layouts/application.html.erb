@@ -18,7 +18,8 @@
    <%= link_to "All Buckets", buckets_path %>
    <%= link_to "New Task", new_task_path %>
    <%= link_to "All Tasks", tasks_path %>
-   <%= button_to "Log Out", logout_path, method: :post %>
+   <%= link_to "My Items", user_path(current_user) %>
+   <p><%= button_to "Log Out", logout_path, method: :post %></p>
   <% else %>
     <%= link_to "Sign Up", signup_path %>
     <%= link_to "Log In", login_path %>

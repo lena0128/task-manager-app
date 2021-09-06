@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show]
-  resources :buckets
+  
+  resources :buckets do
+  resources :tasks, only: [:new, :create, :show]
+  end
+
   resources :tasks
 
   get '/signup', to: 'users#new', as: 'signup'
