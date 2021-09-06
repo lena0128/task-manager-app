@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
     before_action :set_task, except: [:index, :new, :create]
+    before_action :require_login
 
     def index
         @tasks_not_start = Task.tasks_not_start

@@ -8,4 +8,4 @@
 
 User.create([{username: "Joyce13", email: "joyce@email.com", password: "password"}])
 
-Bucket.create([{name: "Joyce's B Party", description: "This is a list for Joyce's 9 years old birthday party preparation.", status: "In Progress", quantity: 6}])
+Bucket.create([{name: "Joyce's B Party", description: "This is a list for Joyce's 9 years old birthday party preparation.", status: "Pending", quantity: 6}])
